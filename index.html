@@ -5,256 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Update Template</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
 
   body {
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 130vh;
-    font-family: 'Inter', sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:'Inter',sans-serif;
   }
 
-  /* ─── Card wrapper ─── */
   .card {
-    width: 420px;
-    background: #1b0d35;
-   
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    width:420px;
+    background:#1b0d35;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    position:relative;
   }
 
-  /* ─── HERO ─── */
   .hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
+    position:relative;
+    height:420px;
   }
 
-  /* Background photo */
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    filter: brightness(0.55) saturate(1.2);
+  .hero img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(0.55);
   }
 
-  /* Purple color wash over the photo */
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      160deg,
-      rgba(90, 20, 160, 0.55) 0%,
-      rgba(120, 40, 200, 0.35) 40%,
-      rgba(60, 10, 110, 0.6) 100%
-    );
-    z-index: 1;
+  .overlay {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.1), #1b0d35);
   }
 
-  /* Bottom fade into card body */
-  .hero-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 140px;
-    background: linear-gradient(to bottom, transparent, #1b0d35);
-    z-index: 2;
-  }
-
-  /* ─── Hero top bar ─── */
-  .hero-bar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    z-index: 4;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 22px;
-  }
-
-  /* Logo */
+  /* LOGO TOP LEFT */
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
+    position:absolute;
+    top:18px;
+    left:18px;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    gap:8px;
   }
 
-  .logo-icon {
-    width: 34px;
-    height: 34px;
-    background: white;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  .logo img {
+    width:36px;
+    height:36px;
+    border-radius:8px;
+
+    padding:4px;
   }
 
-  .logo-text {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.25;
-    letter-spacing: 0.3px;
+  .logo span {
+    color:white;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.2;
   }
 
-  /* Badge */
+  /* BADGE TOP RIGHT */
   .badge {
-    background: #8b2fc9;
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 7px 18px;
-    border-radius: 5px;
-    letter-spacing: 0.4px;
-    white-space: nowrap;
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:#8b2fc9;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:6px;
+    z-index:5;
   }
 
-  /* ─── Headline over hero fade ─── */
-  .hero-title-block {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    padding: 0 22px 22px;
+  .content {
+    position:absolute;
+    bottom:0;
+    padding:20px;
+    z-index:5;
   }
 
   .headline {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: #ffffff;
-    line-height: 1.18;
-    letter-spacing: -0.4px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  }
-
-  /* ─── Content below hero ─── */
-  .content {
-    padding: 18px 22px 0;
+    font-size:26px;
+    font-weight:900;
+    color:#fff;
+    line-height:1.2;
+    margin-bottom:10px;
   }
 
   .subtext {
-    font-size: 12.5px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.58);
-    line-height: 1.65;
-    text-align: center;
-    margin-bottom: 18px;
+    font-size:13px;
+    color:rgba(255,255,255,0.7);
+    line-height:1.5;
   }
 
-  /* ─── Footer bar ─── */
-  .footer {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 14px 0 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .read-more {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .read-more-label {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: white;
-    letter-spacing: 0.2px;
-  }
-
-  .arrow-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .source-text {
-    font-size: 9.5px;
-    color: rgba(255,255,255,0.42);
-    margin-left: 6px;
-  }
-
-  /* Social icons */
-  .social {
-    display: flex;
-    gap: 7px;
-    align-items: center;
-  }
-
-  .icon-wrap {
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
 </style>
 </head>
 <body>
 
 <div class="card">
 
-  <!-- ── HERO ── -->
   <div class="hero">
-    <!-- Photo -->
-    <img id="image" class="hero-img"
-      src="https://res.cloudinary.com/djby6s10a/image/upload/v1776746712/properties/p1iyfubh8pchclnyy3wn.png"
-      alt="Trader watching stock screens" />
+    <img id="image" src="https://res.cloudinary.com/dq32mhbbt/image/upload/v1776750665/Untitled_design_22_qimok5.png" />
 
-    <!-- Purple overlay wash -->
-    <div class="hero-overlay"></div>
-    <!-- Bottom gradient fade -->
-    <div class="hero-fade"></div>
+    <div class="overlay"></div>
 
-    <!-- Top bar: logo + badge -->
-
-
-    <!-- Headline sits over the fade -->
-    <div class="hero-title-block">
-      <h1 class="headline" id="headline">
-     
-      </h1>
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="https://res.cloudinary.com/dq32mhbbt/image/upload/v1776751976/Untitled_900_x_1536_px_800_x_800_px_ntonbn.png" id="logoImg" />
+ 
     </div>
-  </div><!-- /hero -->
 
-  <!-- ── CONTENT ── -->
-  <div class="content">
+    <!-- BADGE -->
 
-    <p class="subtext" id="subtext">
-     
-    </p>
+    <!-- TEXT -->
+    <div class="content">
+      <div class="headline" id="headline">Your headline here</div>
+      <div class="subtext" id="subtext">Your subtext here</div>
+    </div>
 
-    <!-- Footer row -->
+  </div>
 
-
-  </div><!-- /content -->
-</div><!-- /card -->
+</div>
 
 <script>
 (function () {
@@ -270,17 +148,22 @@
     if (img && url) img.src = url;
   }
 
+  function setLogo(url) {
+    const img = document.getElementById("logoImg");
+    if (img && url) img.src = url;
+  }
+
   const hook    = params.get("hook");
   const body    = params.get("body");
   const image   = params.get("imageUrl");
   const badge   = params.get("badge");
-  const source  = params.get("source");
+  const logo    = params.get("logoUrl");
 
   if (hook)   setText("headline", hook);
   if (body)   setText("subtext", body);
   if (badge)  setText("badge", badge);
-  if (source) setText("source", source);
   if (image)  setImage(image);
+  if (logo)   setLogo(logo);
 })();
 </script>
 

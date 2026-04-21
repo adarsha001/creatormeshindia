@@ -148,22 +148,19 @@
     if (img && url) img.src = url;
   }
 
-  function setLogo(url) {
-    const img = document.getElementById("logoImg");
-    if (img && url) img.src = url;
-  }
+
 
   const hook    = params.get("hook");
   const body    = params.get("body");
   const image   = params.get("imageUrl");
   const badge   = params.get("badge");
-  const logo    = params.get("logoUrl");
+
 
   if (hook)   setText("headline", hook);
   if (body)   setText("subtext", body);
   if (badge)  setText("badge", badge);
   if (image)  setImage(image);
-  if (logo)   setLogo(logo);
+
 })();
 </script>
 
